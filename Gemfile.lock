@@ -47,6 +47,9 @@ GEM
     activerecord (6.1.1)
       activemodel (= 6.1.1)
       activesupport (= 6.1.1)
+    activerecord-postgis-adapter (6.0.1)
+      activerecord (~> 6.0)
+      rgeo-activerecord (~> 6.0)
     activestorage (6.1.1)
       actionpack (= 6.1.1)
       activejob (= 6.1.1)
@@ -137,6 +140,10 @@ GEM
       rake (>= 0.8.7)
       thor (~> 1.0)
     rake (13.0.3)
+    rgeo (2.2.0)
+    rgeo-activerecord (6.2.2)
+      activerecord (>= 5.0)
+      rgeo (>= 1.0.0)
     rspec-core (3.9.3)
       rspec-support (~> 3.9.3)
     rspec-expectations (3.9.4)
@@ -200,6 +207,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  activerecord-postgis-adapter (~> 6)
   annotate (~> 3)
   bootsnap (>= 1.4.4)
   byebug
