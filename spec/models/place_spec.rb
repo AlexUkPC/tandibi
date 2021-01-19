@@ -24,7 +24,7 @@ RSpec.describe Place, type: :model do
       place = Place.new
       place.place_type = "unknown"
       expect(place).not_to be_valid
-      ["restaurant", "coffee_shop", "mall", "hotel", "other"].each do |type|
+      Place::PLACE_TYPES.each do |type|
         place.place_type = type
         expect(place).to be_valid
       end
