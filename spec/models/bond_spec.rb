@@ -21,5 +21,20 @@
 require 'rails_helper'
 
 RSpec.describe Bond, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#valid?" do
+    it "should validate bond state correctly" do
+      friend = build(:user)
+      user = build(:user)
+
+      bond = Bond.new(
+        user: user,
+        friend: friend
+      )
+      expect(bond).not_to be_valid
+      Bond::STATES.each do |state|
+        bond.state = state
+        expect(bond).to be_valid
+      end
+    end
+  end
 end
