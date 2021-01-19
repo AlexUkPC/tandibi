@@ -17,8 +17,10 @@
 default: &default
   adapter: postgis
   encoding: unicode
-  user: postgres
+  username: postgres
   password: 1qazXSW@
+  su_username: postgres
+  su_password: 1qazXSW@
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
