@@ -32,4 +32,8 @@ class User < ApplicationRecord
   -> {where("bonds.state = ?", Bond::REQUESTING)}, 
   through: :bonds, 
   source: :friend
+
+  had_many :inward_bonds,
+    class_name: "Bond",
+    foreign_key: :friend_id
 end
