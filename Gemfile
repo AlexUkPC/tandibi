@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'letter_opener_web', '~> 1.4'
+gem 'evil_icons', '~> 1.10', '>= 1.10.1'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
