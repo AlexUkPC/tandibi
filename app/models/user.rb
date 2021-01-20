@@ -42,37 +42,37 @@ class User < ApplicationRecord
   has_many :bonds
 
   has_many :followings,
-  -> { Bond.following }, 
-  through: :bonds, 
-  source: :friend
+    -> { Bond.following },
+    through: :bonds,
+    source: :friend
   has_many :follow_requests,
-  -> { Bond.requesting }, 
-  through: :bonds, 
-  source: :friend
+    -> { Bond.requesting },
+    through: :bonds,
+    source: :friend
 
   has_many :inward_bonds,
     class_name: "Bond",
     foreign_key: :friend_id
 
   has_many :followers,
-  -> { Bond.following },
-  through: :inward_bonds,
-  source: :user
+    -> { Bond.following },
+    through: :inward_bonds,
+    source: :user
 
   before_save :ensure_proper_name_case
 
   def login
     @login || username || email
   end
-  
-  def self.find_authenticable(login)
+
+  def self.find_authenticatable(login)
     where("username = :value OR email = :value", value: login).first
   end
-  
-  def self.find_for_database_authentification(conditions)
+
+  def self.find_for_database_authentication(conditions)
     conditions = conditions.dup
     login = conditions.delete(:login).downcase
-    find_authenticable(login)
+    find_authenticatable(login)
   end
 
   def self.send_reset_password_instructions(conditions)
@@ -81,12 +81,13 @@ class User < ApplicationRecord
     if recoverable.persisted?
       recoverable.send_reset_password_instructions
     end
+    recoverable
   end
-  
+
   def self.find_recoverable_or_init_with_errors(conditions)
     conditions = conditions.dup
     login = conditions.delete(:login).downcase
-    recoverable = find_authenticable(login)
+    recoverable = find_authenticatable(login)
 
     unless recoverable
       recoverable = new(login: login)
@@ -94,9 +95,9 @@ class User < ApplicationRecord
     end
     recoverable
   end
-  
+
   private
-  def ensure_proper_name_case
-    self.first_name = first_name.capitalize
-  end
+    def ensure_proper_name_case
+      self.first_name = first_name.capitalize
+    end
 end
