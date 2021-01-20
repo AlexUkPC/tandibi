@@ -25,7 +25,9 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, authentication_keys: [:login]
+  attr_writer :login
+
   validates :email, uniqueness: true
   validates :username, uniqueness: true
   validates :first_name, presence: true
@@ -53,6 +55,20 @@ class User < ApplicationRecord
 
   before_save :ensure_proper_name_case
 
+  def login
+    @login || username || email
+  end
+  
+  def self.find_authenticable(login)
+    where("username = :value OR email = :value", value: login).first
+  end
+  
+  def self.find_for_database_authentification(condition)
+    conditions = condition.dup
+    login = condition.delete(:login).downcase
+    find_authenticable(login)
+  end
+  
   private
   def ensure_proper_name_case
     self.first_name = first_name.capitalize
