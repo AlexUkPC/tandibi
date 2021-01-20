@@ -27,7 +27,8 @@ RSpec.describe Post, type: :model do
       user = User.create!(
         first_name: "Adam",
         email: "adam@example.com",
-        username: "adam123"
+        username: "adam123",
+        password: "1qazXSW@"
       )
       post = Post.new(
         postable: Status.new(text: "Whohoo!")

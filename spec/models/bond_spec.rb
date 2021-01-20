@@ -42,10 +42,12 @@ RSpec.describe Bond, type: :model do
       it "can be persited" do
         user = User.create email: "e1@example.org",
           first_name: "Edwin",
-          username: "e1"
+          username: "e1",
+          password: "1qazXSW@"
         friend = User.create email: "a1@example.org",
           first_name: "Adam",
-          username: "a1"
+          username: "a1",
+          password: "1qazCDE#"
         
         bond = Bond.new(
           user: user,
