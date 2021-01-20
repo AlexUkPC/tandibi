@@ -22,4 +22,14 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP, message: "must be a valid email address"}
   has_many :posts
+  has_many :bonds
+
+  has_many :followings,
+  -> {where("bonds.state = ?", Bond::FOLLOWING)}, 
+  through: :bonds, 
+  source: :friend
+  has_many :follow_requests,
+  -> {where("bonds.state = ?", Bond::REQUESTING)}, 
+  through: :bonds, 
+  source: :friend
 end
