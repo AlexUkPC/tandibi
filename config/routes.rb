@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'home/index'
   root to: "home#index"
 
   if Rails.env.development?
@@ -8,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   authenticate :user do
-    resources :timeline,
+    resources :timelines,
       only: [:index, :show],
       param: :username
   end
