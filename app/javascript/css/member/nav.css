@@ -1,6 +1,6 @@
 .body-member
 nav.topnav{
-    @apply flex flex-wrap item-center justify-between;
+    @apply flex flex-wrap items-center justify-between;
     @apply pl-6 pr-6 pt-1 pb-1;
     @apply bg-dark-700;
 }
