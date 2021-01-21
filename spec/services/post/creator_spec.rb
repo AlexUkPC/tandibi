@@ -37,7 +37,7 @@ describe Post::Creator do
       end
       
       context "when the status text is empty" do
-        let(:status_text) { "" }
+        let(:status_text) { nil }
         
         it "cannot be posted" do
           expect(subject.call).to be_falsey 
