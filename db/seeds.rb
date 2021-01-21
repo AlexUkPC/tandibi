@@ -36,4 +36,9 @@ post = Post.create!(user: user1, postable: Status.new(text: "Whohoo! I am in Sur
 Post.create!(user: user2, postable: Status.new(text: "Wow! Looks great! Have fun, Sam!"), thread: post)
 Post.create!(user: user1, postable: Status.new(text: "Ya! Ya! Ya! Are you in town?"), thread: post)
 Post.create!(user: user2, postable: Status.new(text: "Yups! Let's explore the city!"), thread: post)
-Post.create!(user: user2, postable: Sight.new(place: place, activity_type: Sight::CHECKIN))
+Post.create!(user: user1, postable: Sight.new(place: place, activity_type: Sight::CHECKIN))
+post2 = Post.create!(user: user2, postable: Status.new(text: "Aici Adam"))
+
+Post.create!(user: user1, postable: Status.new(text: "Aici Sam"), thread: post2)
+Post.create!(user: user2, postable: Status.new(text: "Adam din nou"), thread: post2)
+Post.create!(user: user2, postable: Status.new(text: "Si inca o data Adam"), thread: post2)
