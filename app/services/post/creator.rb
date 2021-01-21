@@ -24,7 +24,7 @@ class Post::Creator < ApplicationService
   end
 
   def status_text
-    @status_text ||= param.fetch(:status_text)
+    @status_text ||= params.fetch(:status_text)
   end
   
   def create_a_status_update
