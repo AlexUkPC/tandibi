@@ -1,4 +1,4 @@
-class Post::PictureAttacher < ApplicationController
+class Post::PictureAttacher < ApplicationService
   attr_reader :post, :blob_arg
   private :post, :blob_arg
   
@@ -17,7 +17,7 @@ class Post::PictureAttacher < ApplicationController
 
   def handle_from_file_upload
     picture = post.pictures.build
-    picture.file.attac(blob_arg)
+    picture.file.attach(blob_arg)
     picture.save!
   end
   
