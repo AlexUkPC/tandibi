@@ -8,7 +8,17 @@
         <%= f.text_area :status_text,
             required: true,
             placeholder: "What's happening?" %>
-        <%= f.submit "Say", class: "submit-btn" %>
+        
+        <div class="controls">
+            <div class="options">
+                <div class="option">
+                    <%= evil_icon "ei-image" %>
+                </div>
+            </div>
+            <div>
+                <%= f.submit "Say", class: "submit-btn" %>
+            </div>
+        </div>
     <% end %>
 </div>
 
