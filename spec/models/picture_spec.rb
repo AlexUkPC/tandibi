@@ -3,10 +3,10 @@
 # Table name: pictures
 #
 #  id         :bigint           not null, primary key
-#  caption    :string           not null
+#  caption    :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  post_id    :bigint
+#  post_id    :bigint           not null
 #
 # Foreign Keys
 #
