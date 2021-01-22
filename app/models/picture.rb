@@ -14,5 +14,5 @@
 #
 class Picture < ApplicationRecord
   belongs_to :post
-  has_many_attached :file
+  has_one_attached :file
 end
