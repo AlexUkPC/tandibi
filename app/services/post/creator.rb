@@ -7,7 +7,7 @@ class Post::Creator < ApplicationService
     @params = params
     @post = Post.new
   end
-  
+
   def call
     case postable_type
     when "Status" then create_a_status_update
@@ -16,46 +16,46 @@ class Post::Creator < ApplicationService
   rescue
     false
   end
-  
+
   private
 
-  def postable_type
-    @postable_type ||= params.fetch(:postable_type)
-  end
-
-  def status_text
-    @status_text ||= params.fetch(:status_text)
-  end
-  
-  def thread
-    @thread ||= begin
-      thread_id = params[:thread_id].presence
-      Post.find(thread_id) if thread_id
+    def postable_type
+      @postable_type ||= params.fetch(:postable_type)
     end
-  end
-  
-  def pictures
-    @pictures ||= params.fetch(:pictures, [])
-  end
-  
-  def attach_pictures!
-    pictures.each do |uploaded_picture|
-      Post::PictureAttacher.call(post, uploaded_picture)
-    end
-  end
 
-  def create_a_status_update
-    status = Status.new(text: status_text)
-    post.postable = status
-    post.user = creator
-    post.thread = thread
-    post.save
-
-    if post.persisted?
-      attach_pictures!
+    def status_text
+      @status_text ||= params.fetch(:status_text)
     end
-    
-    post.persisted?
-  end
-  
+
+    def thread
+      @thread ||= begin
+        thread_id = params[:thread_id].presence
+        Post.find(thread_id) if thread_id
+      end
+    end
+
+    def pictures
+      @pictures ||= params.fetch(:pictures, [])
+    end
+
+    def attach_pictures!
+      pictures.each do |uploaded_picture|
+        Post::PictureAttacher.call(post, uploaded_picture)
+      end
+    end
+
+    def create_a_status_update
+      status = Status.new(text: status_text)
+      post.postable = status
+      post.user = creator
+      post.thread = thread
+      post.save
+
+      if post.persisted?
+        attach_pictures!
+      end
+
+      post.persisted?
+    end
+
 end
