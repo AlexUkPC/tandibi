@@ -17,7 +17,7 @@
         <div class="identifier">
             <%= link_to timeline_path(user) do %>
             <span class="name"><%= user.name %></span>
-            <span class="username"><%= user.username %></span>
+            <span class="username">@<%= user.username %></span>
             <% end %>
         </div>
         <% if postable.is_a?(Status) %>
