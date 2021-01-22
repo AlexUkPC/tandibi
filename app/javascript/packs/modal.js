@@ -4,8 +4,8 @@ window.toggleModal = (modalClass) => {
     const modal = document.querySelector(modalIdentifier)
 
     modal.classList.toggle("opacity-0")
-    modal.classList.toggle("pointer-event-none")
-    modal.classList.toggle("modal-active")
+    modal.classList.toggle("pointer-events-none")
+    body.classList.toggle("modal-active")
 }
 
 window.closeAllModal = () => {
@@ -13,7 +13,7 @@ window.closeAllModal = () => {
     document.querySelectorAll(".modal").forEach((modal) => {
         if (!modal.classList.contains("opacity-0")) {
             modal.classList.add("opacity-0")
-            modal.classList.add("pointer-event-none")
+            modal.classList.add("pointer-events-none")
         }
     })
 }
