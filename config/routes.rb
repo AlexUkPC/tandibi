@@ -12,4 +12,10 @@ Rails.application.routes.draw do
       param: :username
     resources :posts, only: [:create, :show]
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :places, only: [:index]
+    end
+  end
 end
