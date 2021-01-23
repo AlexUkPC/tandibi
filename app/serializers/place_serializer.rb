@@ -1,3 +1,15 @@
 class PlaceSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id,
+    :locale,
+    :name,
+    :place_type,
+    :coordinates
+  def coordinates
+    coordinate = object.coordinate
+    {
+      lng: coordinate.longitude,
+      lat: coordinate.longitude,
+    }
+  end
+  
 end
