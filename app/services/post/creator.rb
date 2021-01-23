@@ -75,7 +75,7 @@ class Post::Creator < ApplicationService
       post.thread = thread
       post.save
 
-      if post.persiste?
+      if post.persisted?
         attach_pictures!
       end
 
