@@ -14,7 +14,7 @@ class Place::Finder < ApplicationService
     result = sort_by_distance(search_keyword_within_radius)
 
     if result.empty?
-      resul = sort_by_distance(search_by_keyword)
+      result = sort_by_distance(search_by_keyword)
     end
 
     result
