@@ -12,11 +12,11 @@ const mutations = {
         state.sight.keyword = kw
     },
 
-    SET_SIGHT_PALCES(state, places){
+    SET_SIGHT_PLACES(state, places){
         state.sight.places = places
     },
 
-    SET_SIGHT_SELECTED_PALCE(state, places){
+    SET_SIGHT_SELECTED_PLACE(state, place){
         state.sight.selectedPlace = place
     },
 
