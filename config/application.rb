@@ -37,5 +37,6 @@ module Tandibi
     config.to_prepare do
       Devise::Mailer.layout "mailer"
     end
+    config.active_job.queue_adapter = :delayed_jobs
   end
 end
