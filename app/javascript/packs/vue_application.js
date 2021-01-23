@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import SightPoster from '../components/SightPoster'
-import { truncate } from "..lib/filters";
+import { truncate } from "../lib/filters"
 
 Vue.filter("truncate", truncate)
 
