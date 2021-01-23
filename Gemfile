@@ -33,6 +33,7 @@ gem 'premailer-rails', '~> 1.11', '>= 1.11.1'
 gem 'active_decorator', '~> 1.3', '>= 1.3.4'
 gem 'aws-sdk-s3', '~> 1.87'
 gem 'faraday', '~> 1.3'
+gem 'active_model_serializers', '~> 0.10.12'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
