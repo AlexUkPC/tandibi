@@ -1,11 +1,11 @@
 class Place::Crawler < ApplicationService
   attr_reader :keyword, :lat, :lng
   private :keyword, :lat, :lng
-  API_KEY = Rails.application.creadentials.dig(
+  API_KEY = Rails.application.credentials.dig(
       :google, :credentials, :map)
   ENDPOINT = "https://maps.googleapis.com".freeze
 
-  def initialize
+  def initialize(keyword, lat:, lng:)
     @keyword = keyword
     @lat = lat
     @lng = lng
