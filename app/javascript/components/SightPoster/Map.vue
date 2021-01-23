@@ -52,6 +52,12 @@ const Component = Vue.extend({
                 this.coordinates.lat = this.$store.state.coordinates.lat
                 this.coordinates.lng = this.$store.state.coordinates.lng
                 this.redraw()
+            } else if (mutation.type == "SET_SIGHT_SELECTED_PLACE") {
+                const selectedPlace = this.$store.state.sight.selectedPlace
+                const placeCoords = selectedPlace.coordinates
+                this.coordinates.lat = placeCoords.lat
+                this.coordinates.lng = placeCoords.lng
+                this.redraw()
             }
         })
         this.redraw()
