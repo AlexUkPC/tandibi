@@ -1,6 +1,7 @@
 class Place::Crawler < ApplicationService
   attr_reader :keyword, :lat, :lng
   private :keyword, :lat, :lng
+  
   API_KEY = Rails.application.credentials.dig(
       :google, :credentials, :map)
   ENDPOINT = "https://maps.googleapis.com".freeze
@@ -14,7 +15,7 @@ class Place::Crawler < ApplicationService
   def call
     crawled_places.each do |place_data|
       coordinates = place_data["geometry"]["location"]
-      lat, lng = coordinates["lat", coordinates["lng"]]
+      lat, lng = coordinates["lat"], coordinates["lng"]
       
       # possible N+1, would you find a way to fix it?
       next if exists?("en", lng, lat)
@@ -27,7 +28,7 @@ class Place::Crawler < ApplicationService
       )
     end
   rescue Faraday::ConnectionFailed => e
-    # actually, we should report this erros
+    # actually, we should report this error
     # to a centralized error notification service
     puts e.message
   end
@@ -51,8 +52,9 @@ class Place::Crawler < ApplicationService
         req.params["radius"] = 2000
         req.params["language"] = "en"
         req.params["location"] = "#{lat},#{lng}"
-        req.params["ley"] = API_KEY
+        req.params["key"] = API_KEY
       end
+
       response = JSON.parse(response.body)
       response["results"]
     end
@@ -77,7 +79,8 @@ class Place::Crawler < ApplicationService
 
     place = Place.where(
       coordinate: point,
-      locale: "en"
+      locale: "en",
     ).exists?
   end
+
 end
