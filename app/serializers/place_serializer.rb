@@ -4,12 +4,12 @@ class PlaceSerializer < ActiveModel::Serializer
     :name,
     :place_type,
     :coordinates
+
   def coordinates
     coordinate = object.coordinate
     {
       lng: coordinate.longitude,
-      lat: coordinate.longitude,
+      lat: coordinate.latitude,
     }
   end
-  
 end
