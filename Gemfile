@@ -50,6 +50,7 @@ group :test do
   gem 'launchy', '~> 2.5'
   gem 'capybara', '~> 3.34'
   gem 'apparition', '~> 0.6.0'
+  gem 'vcr', '~> 6.0'
 end
 
 group :development do
