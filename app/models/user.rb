@@ -33,6 +33,7 @@ class User < ApplicationRecord
     reset_password_keys: [:login]
 
   attr_writer :login
+  extract_roles_from :role
 
   validates :email, uniqueness: true
   validates :username, uniqueness: true
@@ -67,6 +68,10 @@ class User < ApplicationRecord
   
   def login
     @login || username || email
+  end
+
+  def role
+    username == "alexr" ? :admin : :member
   end
 
   def self.find_authenticatable(login)
