@@ -35,6 +35,7 @@ gem 'aws-sdk-s3', '~> 1.87'
 gem 'faraday', '~> 1.3'
 gem 'active_model_serializers', '~> 0.10.12'
 gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.5'
+gem 'bali', '~> 6.0', '>= 6.0.1'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
