@@ -12,6 +12,11 @@ Rails.application.routes.draw do
       param: :username
 
     resources :posts, only: [:create, :show]
+    resources :bonds, param: :username do
+      member do
+        post :follow
+      end
+    end
   end
 
   namespace :settings do
