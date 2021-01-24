@@ -7,9 +7,9 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     return unless current_user
-    I18n.locale = curent_user.locale
+    I18n.locale = current_user.locale
   end
-  
+
   def member_controller?
     return false if controller_path ==" home"
 
