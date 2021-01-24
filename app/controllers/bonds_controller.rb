@@ -1,5 +1,5 @@
 class BondsController < ApplicationController
-  delegate :visited_user, to :helpers
+  delegate :visited_user, to: :helpers
 
   def follow
     unless can? :follow, visited_user
