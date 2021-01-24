@@ -1,9 +1,15 @@
 class ApplicationController < ActionController::Base
   before_action :config_devise_params, if: :devise_controller?
   layout :layout_by_resource
+  before_action :set_locale
 
   private
 
+  def set_locale
+    return unless current_user
+    I18n.locale = curent_user.locale
+  end
+  
   def member_controller?
     return false if controller_path ==" home"
 
