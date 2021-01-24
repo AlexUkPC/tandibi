@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :settings do
-    get 'users/show'
-    get 'users/update'
-  end
   devise_for :users
   root to: "home#index"
 
@@ -16,6 +12,10 @@ Rails.application.routes.draw do
       param: :username
 
     resources :posts, only: [:create, :show]
+  end
+
+  namespace :settings do
+    resource :user, only: [:show, :update]
   end
 
   namespace :api do
