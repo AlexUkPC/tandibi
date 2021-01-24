@@ -39,7 +39,7 @@ module Tandibi
     end
     config.active_job.queue_adapter = :delayed_job
 
-    config.i18n.available_locale = [
+    config.i18n.available_locales = [
       :"en-US",
       :"ro"
     ]

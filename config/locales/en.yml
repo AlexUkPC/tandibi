@@ -29,5 +29,14 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
+en-US:
+  common: 
+    say: Say
+    followers:
+      zero: followers
+      one: follower
+      other: followers
+  
+  posts:
+    form:
+      whats_happening: What's happening?
