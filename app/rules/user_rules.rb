@@ -7,10 +7,6 @@ class UserRules < Bali::Rules
       user.followers.include?(current_user)
   end
 
-  role :admin do
-    can :see_timeline
-  end
-
   can :follow do |user, current_user|
     user != current_user &&
       !user.followers.include?(current_user) &&
@@ -19,11 +15,22 @@ class UserRules < Bali::Rules
         state: Bond::REQUESTING
       ).exists?
   end
+
   can :unfollow do |user, current_user|
     user != current_user &&
       current_user.bonds.where(
         friend: user,
         state: [Bond::REQUESTING, Bond::FOLLOWING]
       ).exists?
+  end
+
+  can :see_follower_requests do |user, current_user|
+    user == current_user &&
+      user.inward_bonds.where(state: Bond::REQUESTING).any?
+  end
+
+  role :admin do
+    can :see_timeline
+    can :see_follower_requests
   end
 end
