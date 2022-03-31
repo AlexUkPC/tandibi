@@ -576,6 +576,24 @@ ActiveRecord::Schema.define(version: 2021_01_24_164653) do
     t.check_constraint "st_srid(the_geom) = 4269", name: "enforce_srid_geom"
   end
 
+  create_table "tabblock20", primary_key: "geoid", id: { type: :string, limit: 15 }, force: :cascade do |t|
+    t.string "statefp", limit: 2
+    t.string "countyfp", limit: 3
+    t.string "tractce", limit: 6
+    t.string "blockce", limit: 4
+    t.string "name", limit: 10
+    t.string "mtfcc", limit: 5
+    t.string "ur", limit: 1
+    t.string "uace", limit: 5
+    t.string "uatype", limit: 1
+    t.string "funcstat", limit: 1
+    t.float "aland"
+    t.float "awater"
+    t.string "intptlat", limit: 11
+    t.string "intptlon", limit: 12
+    t.geometry "the_geom", limit: {:srid=>4269, :type=>"multi_polygon"}
+  end
+
   create_table "tract", primary_key: "tract_id", id: { type: :string, limit: 11 }, force: :cascade do |t|
     t.serial "gid", null: false
     t.string "statefp", limit: 2
